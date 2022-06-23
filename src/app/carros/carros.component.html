@@ -1,0 +1,18 @@
+<h2>Lista de Carros</h2>
+<ul class="carros">
+  <li *ngFor="let carro of carros">
+    <button [class.selected]="carro=== selectedCarro" type="button" (click)="onSelect(carro)">
+      <span class="id">{{carro.codigo}}</span>
+      <span class="modelo">{{carro.modelo}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedCarro">
+  <h2>{{selectedCarro.modelo | uppercase}} Details</h2>
+  <div>id: {{selectedCarro.codigo}}</div>
+  <div>
+    <label for="card-info">Modelo: </label>
+    <input id="card-info" [(ngModel)]="selectedCarro.modelo" placeholder="Modelo">
+  </div>
+</div>
